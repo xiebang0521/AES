@@ -1,8 +1,13 @@
 ﻿  aes.c
+  test.c
+  正在生成代码...
 E:\XieChaoBang_Work\RFID\MY_AES\MY_AES\MY_AES\aes.c(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 E:\XieChaoBang_Work\RFID\MY_AES\MY_AES\MY_AES\aes.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   (编译源文件“aes.c”)
   
-E:\XieChaoBang_Work\RFID\MY_AES\MY_AES\MY_AES\aes.c(290,27): warning C4090: “函数”: 不同的“const”限定符
-E:\XieChaoBang_Work\RFID\MY_AES\MY_AES\MY_AES\aes.c(307,30): warning C4090: “函数”: 不同的“const”限定符
+E:\XieChaoBang_Work\RFID\MY_AES\MY_AES\MY_AES\aes.c(315,27): warning C4090: “函数”: 不同的“const”限定符
+E:\XieChaoBang_Work\RFID\MY_AES\MY_AES\MY_AES\aes.c(338,30): warning C4090: “函数”: 不同的“const”限定符
+E:\XieChaoBang_Work\RFID\MY_AES\MY_AES\MY_AES\aes.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“test.c”)
+  
   MY_AES.vcxproj -> E:\XieChaoBang_Work\RFID\MY_AES\MY_AES\x64\Debug\MY_AES.exe

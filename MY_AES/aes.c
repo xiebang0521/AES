@@ -121,7 +121,12 @@ static void keyExpansion(const uint8_t *key, uint8_t *roundkey)
     }
 }
 
-
+/**
+ * @brief 轮秘钥加
+ * @param state: 状态数组
+ * @param roundkey 轮秘钥数组
+ * @param round 轮密钥加轮次
+ */
 static void addRoundKey(uint8_t *state, uint8_t *roundkey, uint8_t round)
 {
     uint8_t i, j;
@@ -136,10 +141,10 @@ static void addRoundKey(uint8_t *state, uint8_t *roundkey, uint8_t round)
 
 /**
  * @brief 字符代替
- * @param state 进行字节替换的数据数组
+ * @param state: 状态数组
  * @return null
  */
-void subByte(uint8_t *state)
+static void subByte(uint8_t *state)
 {
     for (uint8_t i = 0; i < 16; i++)
     {
@@ -149,10 +154,10 @@ void subByte(uint8_t *state)
 
 /**
  * @brief 行位移
- * @param state 旋转的数据
+ * @param state: 状态数组
  * @return null
  */
-void shiftRow(uint8_t *state)
+static void shiftRow(uint8_t *state)
 {
     uint8_t temp[4][4];
 
@@ -191,7 +196,6 @@ static uint8_t GFMul(uint8_t x, uint8_t y)
         }
 
         x = GF2(x);
-
         y >>= 1;
     }
     return ret;
@@ -199,10 +203,11 @@ static uint8_t GFMul(uint8_t x, uint8_t y)
 
 /**
  * @brief 列混合
- * @param data 待处理数据
+ * @param state: 状态数组
+ * @param constant 列混合的常数矩阵
  * @return null
  */
-void mixColumns(uint8_t *state, uint8_t *constant)
+static void mixColumns(uint8_t *state, uint8_t *constant)
 {
     uint8_t temp[4][4];
 
@@ -223,6 +228,11 @@ void mixColumns(uint8_t *state, uint8_t *constant)
     }
 }
 
+/**
+ * @brief  逆字节替换
+ * @param  state: 状态数组
+ * @return null
+ */
 static void invSubByte(uint8_t *state)
 {
     for (uint8_t i = 0; i < 16; i++)
@@ -232,6 +242,11 @@ static void invSubByte(uint8_t *state)
 }
 
 // 行移位 向右移 row - 1 位
+/**
+ * @brief  逆行移位
+ * @param  state: 状态数组
+ * @return null
+ */
 static void invShiftRow(uint8_t *state)
 {
     uint8_t temp[4][4];
@@ -253,8 +268,12 @@ static void invShiftRow(uint8_t *state)
     }
 }
 
-
-
+/**
+ * @brief 逆列混合
+ * @param state 状态数组
+ * @param constant 逆列混合常数举证
+ * @return null
+ */
 static void invMixCloumns(uint8_t *state, uint8_t *constant)
 {
     uint8_t temp[4][4];
@@ -276,6 +295,12 @@ static void invMixCloumns(uint8_t *state, uint8_t *constant)
     }
 }
 
+/**
+ * @brief  AES128-ECB 加密
+ * @param  *state: 待加密数据
+ * @param  *key: 密钥
+ * @return null
+ */
 void cipher(uint8_t *state, uint8_t *key)
 {
     keyExpansion(key, RoundKey);
@@ -294,6 +319,12 @@ void cipher(uint8_t *state, uint8_t *key)
     addRoundKey(state, RoundKey, NR);
 }
 
+/**
+ * @brief  AES-128-ECB解密
+ * @param  state: 待解密数据
+ * @param  key: 密钥
+ * @return null
+ */
 void invcipher(uint8_t *state, uint8_t *key)
 {
     keyExpansion(key, RoundKey);

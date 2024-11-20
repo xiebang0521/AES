@@ -35,8 +35,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-11-18T09:51:26.624Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -44,9 +43,9 @@
               "Title": "aes.c",
               "DocumentMoniker": "E:\\XieChaoBang_Work\\RFID\\MY_AES\\MY_AES\\MY_AES\\aes.c",
               "RelativeDocumentMoniker": "MY_AES\\aes.c",
-              "ToolTip": "E:\\XieChaoBang_Work\\RFID\\MY_AES\\MY_AES\\MY_AES\\aes.c*",
-              "RelativeToolTip": "MY_AES\\aes.c*",
-              "ViewState": "AgIAALoAAAAAAAAAAAAAANQAAADDAAAAAAAAAA==",
+              "ToolTip": "E:\\XieChaoBang_Work\\RFID\\MY_AES\\MY_AES\\MY_AES\\aes.c",
+              "RelativeToolTip": "MY_AES\\aes.c",
+              "ViewState": "AgIAAAsBAAAAAAAAAAAkwC4BAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-11-18T09:51:15.639Z",
               "IsPinned": true,
@@ -62,8 +61,7 @@
               "RelativeToolTip": "MY_AES\\test.c",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-11-19T08:06:30.773Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-19T08:06:30.773Z"
             }
           ]
         }

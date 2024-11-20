@@ -4,7 +4,7 @@
 #define __AES_H__
 #include "stdio.h"
 typedef unsigned char uint8_t;
-typedef uint8_t state_t[4][4];
+
 // ECB密码本模式
 #ifndef ECB
 #define ECB
