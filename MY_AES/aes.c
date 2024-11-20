@@ -150,7 +150,7 @@ void shiftRow(uint8_t* state)
     {
         for (uint8_t j = 0; j < 4; j++)
         {
-            temp[j][i] = state[(4 * ((j + i) % 4)) + i];
+            temp[i][j] = state[(4 * ((j + i) % 4)) + i];
         }
     }
 
@@ -158,7 +158,7 @@ void shiftRow(uint8_t* state)
     {
         for (uint8_t j = 0; j < 4; j++)
         {
-            state[(4 * i) + j] = temp[i][j];
+            state[(4 * i) + j] = temp[j][i];
         }
     }
 }
@@ -192,7 +192,10 @@ uint8_t gfMultiply(uint8_t x, uint8_t y)
      {
          for (uint8_t j = 0; j < 4; j++)
          {
-             temp[i][j] = gfMultiply(*(state + 4 * 0 + j), *(constant + 4 * i + 0)) ^ gfMultiply(*(state + 4 * 1 + j), *(constant + 4 * i + 1)) ^ gfMultiply(*(state + 4 * 2 + j), *(constant + 4 * i + 2)) ^ gfMultiply(*(state + 4 * 3 + j), *(constant + 4 * i + 3));
+             temp[i][j] = gfMultiply(*(state + 4 * j + 0), *(constant + 4 * i + 0)) 
+                        ^ gfMultiply(*(state + 4 * j + 1), *(constant + 4 * i + 1)) 
+                        ^ gfMultiply(*(state + 4 * j + 2), *(constant + 4 * i + 2)) 
+                        ^ gfMultiply(*(state + 4 * j + 3), *(constant + 4 * i + 3));
          }
      }
 
@@ -200,7 +203,7 @@ uint8_t gfMultiply(uint8_t x, uint8_t y)
      {
          for (uint8_t j = 0; j < 4; j++)
          {
-             *(state + 4 * i + j) = temp[i][j];
+             *(state + 4 * i + j) = temp[j][i];
          }
      }
  }
@@ -236,59 +239,19 @@ static void MixColumns(state_t *state)
 }
 void cipher(uint8_t *state, uint8_t *key)
 {
-    int round = 0;
     keyExpansion(key, RoundKey);
     addRoundKey(state, RoundKey, 0);
-    for (int i = 0; i < 16; i++)
-    {
-        printf("0x%02x ", state[i]);
-    }
-    printf("\n", round);
+
     for (uint8_t i = 1; i <= 10; i++)
     {
         subByte(state);
-        printf("sub:");
-        for (int i = 0; i < 16; i++)
-        {
-            printf("0x%02x ", state[i]);
-        }
-        printf("\n", round);
         shiftRow(state);
-        printf("shi:");
-        for (int i = 0; i < 16; i++)
-        {
-            printf("0x%02x ", state[i]);
-        }
-        printf("\n", round);
-
         if (i == 10)
             break;
-        //mixColumns(state,constant);
-        MixColumns(state);
-        printf("mix:");
-        for (int i = 0; i < 16; i++)
-        {
-            printf("0x%02x ", state[i]);
-        }
-        printf("\n", round);
+        mixColumns(state,constant);
         addRoundKey(state, RoundKey, i);
-        printf("add:");
-        for (int i = 0; i < 16; i++)
-        {
-            printf("0x%02x ", state[i]);
-        }
-        printf("\n", round);
-        printf("\n", round);
-
     }
-
 
     addRoundKey(state, RoundKey, NR);
-    for (int i = 0; i < 16; i++)
-    {
-        printf("0x%02x ", state[i]);
-    }
-    printf("\n", round);
-    printf("\n", round);
 }
 
