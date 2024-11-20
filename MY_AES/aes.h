@@ -19,4 +19,5 @@ typedef uint8_t state_t[4][4];
 uint8_t RoundKey[AES_ROUND_KEY_LEN];
 
 void cipher(uint8_t *state, uint8_t *key);
+void invcipher(uint8_t *state, uint8_t *key);
 #endif // ! __AES_H__
